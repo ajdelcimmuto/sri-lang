@@ -12,3 +12,22 @@ pest_derive = "2.1"
 
 inkwell = { git = "https://github.com/TheDan64/inkwell", branch = "master", features = ["llvm10-0"] }
 
+rustyline = "6.2"
+cfg-if = "0.1"
+
+[lib]
+path = "src/lib.rs"
+
+[[bin]]
+name = "main"
+path = "src/main.rs"
+test = false
+
+[[bin]]
+name = "repl"
+test = false
+
+[features]
+jit = []
+interpreter = []
+vm = []
