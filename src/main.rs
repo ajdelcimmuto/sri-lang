@@ -2,7 +2,6 @@ use inkwell::context::Context;
 use inkwell::execution_engine::JitFunction;
 use inkwell::OptimizationLevel;
 
-// main function
 fn main() {
     // ANCHOR: first
     let context = Context::create();
