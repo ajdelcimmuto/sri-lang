@@ -1,0 +1,14 @@
+[package]
+name = "sri-lang"
+version = "0.1.0"
+authors = ["hayewood"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+pest = "2.1"
+pest_derive = "2.1"
+
+inkwell = { git = "https://github.com/TheDan64/inkwell", branch = "master", features = ["llvm10-0"] }
+
