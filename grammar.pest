@@ -1,14 +1,8 @@
-Program = _{ SOI ~ Expr ~ EOF }
+Program = _{ SOI ~ Func ~ EOF }
 
-Expr = { UnaryExpr | BinaryExpr }
+Func = { Operator ~ "(" ~ (Int | Func) ~ ("," ~ (Int | Func))* ~ ")" }
 
-Term = _{Int | "(" ~ Expr ~ ")" }
-
-UnaryExpr = { Operator ~ Term }
-
-BinaryExpr = { Term ~ (Operator ~ Term)* }
-
-Operator = { "+" | "-" }
+Operator = { "sum" | "sub" }
 
 Int = @{ Operator? ~ ASCII_DIGIT+ }
 
