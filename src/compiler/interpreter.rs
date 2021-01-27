@@ -1,7 +1,4 @@
-use sri_lang::Compiler;
-
+use crate::Compile;
 pub struct Interpreter;
 
-impl Compiler for Interpreter {
-    type Output = Result<i32>;
-}
+impl Compile for Interpreter {}
