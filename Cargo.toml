@@ -1,5 +1,5 @@
 [package]
-name = "sri_lang"
+name = "sri-lang"
 version = "0.1.0"
 authors = ["hayewood"]
 edition = "2018"
@@ -21,10 +21,6 @@ path = "src/lib.rs"
 [[bin]]
 name = "main"
 path = "src/main.rs"
-test = false
-
-[[bin]]
-name = "repl"
 test = false
 
 [features]

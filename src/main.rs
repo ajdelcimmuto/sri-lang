@@ -1,9 +1,7 @@
-use cfg_if::cfg_if;
-
 use sri_lang::Compile;
 
-use sri_lang::Interpreter as Engine;
-
+mod compiler;
+use compiler::interpreter::Interpreter as Engine;
 fn main() {
     let args: Vec<String> = std::env::args().collect();
 
@@ -11,8 +9,7 @@ fn main() {
         println!("No file argument found");
         std::process::exit(-1);
     }
-    println!(
-        "{:?}",
-        Engine::from_source(&std::fs::read_to_string(&args[1]).unwrap()).unwrap()
-    );
+
+    let source: &str = &std::fs::read_to_string(&args[1]).unwrap();
+    Engine::from_source(source);
 }

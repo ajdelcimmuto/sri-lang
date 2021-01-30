@@ -5,7 +5,7 @@ use pest::{self, Parser};
 struct SriParser;
 
 pub fn parse(source: &str) {
-    let parse_result = SriParser::parse(Rule::Func, "sum(5,5);").unwrap();
+    let parse_result = SriParser::parse(Rule::Func, source).unwrap();
     let tokens = parse_result.tokens();
 
     for token in tokens {
