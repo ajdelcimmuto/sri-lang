@@ -26,14 +26,12 @@ pub fn parse(source: &str) -> std::result::Result<Vec<Node>, pest::error::Error<
             Rule::Func => {
                 let mut pair = pair.into_inner();
                 let op = pair.next().unwrap().as_str();
-                println!("{:?}", op);
                 let mut ints = Vec::new();
                 for int in pair {
                     match int.as_rule() {
                         Rule::Int => {
                             let istr = int.as_str();
                             let int: i32 = istr.parse().unwrap();
-                            println!("{}", int);
                             ints.push(Node::Int(int));
                         }
                         _ => unreachable!(),
@@ -47,7 +45,6 @@ pub fn parse(source: &str) -> std::result::Result<Vec<Node>, pest::error::Error<
     }
 
     pub fn parse_func(pair: &str, ints: Vec<Node>) -> Node {
-        println!("BRUH: {:?}", ints);
         Node::Func {
             op: match pair {
                 "sum" => Operator::sum,
