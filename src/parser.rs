@@ -13,7 +13,6 @@ pub fn parse(source: &str) -> std::result::Result<Vec<Node>, pest::error::Error<
     {
         let mut ast = vec![];
         let parse_result = SriParser::parse(Rule::Program, source)?;
-        println!("{:?}", parse_result);
         for pair in parse_result {
             if let Rule::Func = pair.as_rule() {
                 ast.push(build_ast_from_func(pair));
@@ -24,11 +23,10 @@ pub fn parse(source: &str) -> std::result::Result<Vec<Node>, pest::error::Error<
 
     pub fn build_ast_from_func(pair: pest::iterators::Pair<Rule>) -> Node {
         match pair.as_rule() {
-            Rule::Func => build_ast_from_func(pair.into_inner().next().unwrap()),
-            Rule::Operator => {
-                println!("{:?}", pair);
-                let op = pair.as_str();
-                let pair = pair.into_inner();
+            Rule::Func => {
+                let mut pair = pair.into_inner();
+                let op = pair.next().unwrap().as_str();
+                println!("{:?}", op);
                 let mut ints = Vec::new();
                 for int in pair {
                     match int.as_rule() {
